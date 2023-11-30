@@ -1,0 +1,16 @@
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print("ASd")
+                    print("error ", error.localizedDescription)
+                    self.error = error.localizedDescription
+                }
+            } receiveValue: { [weak self] returnedValue in
+               // self?.data = returnedValue
+                self?.data.append(returnedValue)
+                
+            }
+            .store(in: &cancellables)
+    }
